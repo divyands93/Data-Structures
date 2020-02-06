@@ -1,0 +1,74 @@
+import java.util.*;
+class Node {
+    int data;
+    Node right;
+    Node left;
+    Node(int data){
+        this.data = data;
+        right = null;
+        left = null;
+    }
+}
+public class BST{
+    Node root;
+    BST(){
+        root = null;
+    }
+    void insert(int data) {
+        root = insertUtil(root, data);
+    }
+    
+    Node insertUtil(Node root, int data) {
+        if(root==null) {
+            root = new Node(data);
+        } else {
+            if(data>=root.data) {
+                root.right = insertUtil(root.right,data);
+            } else {
+                root.left = insertUtil(root.left,data);
+            }
+        }
+        return root;
+    }
+    
+    void print(Node root) {
+        if(root== null)
+            return;
+         print(root.left);
+         System.out.print(root.data+" ");
+         print(root.right);
+    }
+    
+    void mirrorTree() {
+       root = mirrorTree(root);
+    }
+    
+    Node mirrorTree(Node root) {
+        if(root == null) {
+            return root;
+        }
+        
+        Node left = mirrorTree(root.left);
+        Node right = mirrorTree(root.right);
+        root.right = left;
+        root.left = right;
+        return root;
+    }
+     public static void main(String []args){
+        BST b= new BST();
+        b.insert( 8);
+        b.insert( 6);
+        b.insert( 4);
+        b.insert( 5);
+        b.insert( 7);
+        b.insert( 2);
+        b.insert( 12);
+        b.insert(10);
+        b.insert(14);
+        b.insert( 11);
+        b.print(b.root);
+        b.mirrorTree();
+        System.out.println();
+        b.print(b.root);
+     }
+}
