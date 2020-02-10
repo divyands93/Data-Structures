@@ -41,7 +41,7 @@ public class BST{
             return true;
         }
         
-        return  Math.abs(height(root.left)-height(root.right))< 2 && isBalancedUtil(root.left) && isBalancedUtil(root.right);
+        return  (Math.abs(height(root.left)-height(root.right))< 2 && isBalancedUtil(root.left) && isBalancedUtil(root.right));
     }
     
     int height(Node root) {
