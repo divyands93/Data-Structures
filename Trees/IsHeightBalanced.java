@@ -36,7 +36,7 @@ public class BST{
        System.out.println(balanced);
     }
     
-    Boolean isBalancedUtil(Node root) {
+    boolean isBalancedUtil(Node root) {
         if(root == null){
             return true;
         }
